@@ -68,6 +68,13 @@ npm run build-pdf //生成pdf
 
 如果有任何想法或需求，可以在 [issue](https://github.com/idealclover/Resume/issues) 中告诉我们，同时我们欢迎各种 pull requests
 
+### NEXT-STEPS
+
+- [ ] 多语言简历支持
+- [ ] 更友好的交互方式 eg：在线的网页
+- [ ] 与其他在线简历集成
+- [ ] 自定义简历样式
+- [ ] 一页纸限制
 
 ### Open-source Licenses
 
