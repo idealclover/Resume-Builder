@@ -6,10 +6,10 @@
 
 ### 效果展示
 
-* [原始数据](https://github.com/idealclover/Resume/blob/master/data.json)
-* [生成的html](https://github.com/idealclover/Resume/blob/master/examples/resume.html)
-* [生成的markdown](https://github.com/idealclover/Resume/blob/master/examples/resume.md)
-* [生成的pdf](https://github.com/idealclover/Resume/blob/master/examples/resume.pdf)
+* [原始数据](https://github.com/idealclover/Resume/blob/master/data.json) [Download_link](https://github.com/idealclover/Resume/raw/master/data.json)
+* [生成的html](https://github.com/idealclover/Resume/blob/master/examples/resume.html) [Download_link](https://github.com/idealclover/Resume/raw/master/examples/resume.html)
+* [生成的markdown](https://github.com/idealclover/Resume/blob/master/examples/resume.md) [Download_link](https://github.com/idealclover/Resume/raw/master/examples/resume.md)
+* [生成的pdf](https://github.com/idealclover/Resume/blob/master/examples/resume.pdf) [Download_link](https://github.com/idealclover/Resume/raw/master/examples/resume.pdf)
 
 ~~不要问我为什么没有jpg格式！！！~~
 
