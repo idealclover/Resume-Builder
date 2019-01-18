@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title>{{name}}的简历</title>
+</head>
+
+<body>
+    <h1>{{name}}</h1>
+    {{each categories category_val category_key}}
+        <section>
+            <h2>{{category_key}}</h2>
+            <hr />
+            {{each category_val project_val}}
+                <h3>{{project_val.name}}</h3>
+                <p>{{project_val.time}}</p>
+                <p>{{project_val.role}}</p>
+                <p>{{project_val.position}}</p>
+                <ul>
+                    {{each project_val.details details}}
+                        <li>{{details}}</li>
+                    {{/each}}
+                </ul>
+            {{/each}}
+        </section>
+    {{/each}}
+</body>
+</html>

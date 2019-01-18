@@ -1,0 +1,12 @@
+{
+  "name": "Resume",
+  "version": "1.0.0",
+  "description": "My resume builder",
+  "main": "index.js",
+  "repository": "https://github.com/idealclover/Resume",
+  "author": "idealclover",
+  "license": "MIT",
+  "dependencies": {
+    "art-template": "^4.13.2"
+  }
+}
