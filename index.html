@@ -1,27 +1,60 @@
 <html>
 <head>
-<meta charset='utf-8'>
-<title>{{name}}的简历</title>
+    <meta charset='utf-8'>
+    <title>{{name}}的简历</title>
+    <!-- <link href="static/style.css" rel="stylesheet"> -->
+    <style>
+        .project{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .project{
+            grid-column: span 12
+        }
+        .project_value{
+            grid-column: span 12
+        }
+        .project_time{
+            /* display: inline; */
+            grid-column: span 4
+        }
+        .project_role{
+            /* display: inline; */
+            grid-column: span 4
+        }
+        .project_position{
+            /* display: inline; */
+            text-align: right;
+            grid-column: span 4
+        }
+        .project_list{
+            grid-column: span 12
+        }
+    </style>
 </head>
 
 <body>
-    <h1>{{name}}</h1>
-    {{each categories category_val category_key}}
-        <section>
-            <h2>{{category_key}}</h2>
-            <hr />
-            {{each category_val project_val}}
-                <h3>{{project_val.name}}</h3>
-                <p>{{project_val.time}}</p>
-                <p>{{project_val.role}}</p>
-                <p>{{project_val.position}}</p>
-                <ul>
-                    {{each project_val.details details}}
-                        <li>{{details}}</li>
+    <div class="main">
+        <h1 class="name">{{name}}</h1>
+        {{each categories category_val category_key}}
+            <section class="category">
+                <h2 class="category_name">{{category_key}}</h2>
+                <hr />
+                <section class="project">
+                    {{each category_val project_val}}
+                        <h3 class="project_value">{{project_val.name}}</h3>
+                        <div class="project_time">{{project_val.time}}</div>
+                        <div class="project_role">{{project_val.role}}</div>
+                        <div class="project_position">{{project_val.position}}</div>
+                        <ul class="project_list">
+                            {{each project_val.details details}}
+                                <li class="project_listitem">{{details}}</li>
+                            {{/each}}
+                        </ul>
                     {{/each}}
-                </ul>
-            {{/each}}
-        </section>
-    {{/each}}
+                </section>
+            </section>
+        {{/each}}
+    </div>
 </body>
 </html>
