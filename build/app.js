@@ -8,8 +8,8 @@ const fs = require("fs");
 const server = http.createServer((req, res) => {
     console.log("New request arrived.");
     const template = require('art-template');
-    const data = require('./data.json');
-    const html = template(__dirname + '/index.html', data);
+    const data = require('../data.json');
+    const html = template(__dirname + '/../index.html', data);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     res.write(html);
