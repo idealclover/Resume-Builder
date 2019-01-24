@@ -29,6 +29,17 @@
                 ]
             }
         ],
+        "实习经历":[
+            {
+                "name": "Amazon",
+                "role": "PM Intern",
+                "time": "2018.10-2019.2",
+                "position": "上海",
+                "details":[
+                    "<a href='https://idealclover.top'>QAQAQ</a>"
+                ]
+            }
+        ],
         "项目经历":[
             {
                 "name": "GitHub @idealclover",
