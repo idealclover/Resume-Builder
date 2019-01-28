@@ -8,8 +8,8 @@ const fs = require("fs");
 const server = http.createServer((req, res) => {
     console.log("New request arrived.");
     const template = require('art-template');
-    const data = require('../data.json');
-    const html = template(__dirname + '/../index.html', data);
+    const data = require('../src/data.json');
+    const html = template(__dirname + '/../src/index.html', data);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     res.write(html);
@@ -18,5 +18,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running at http://${hostname}:${port}/`);
 });
