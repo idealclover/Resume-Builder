@@ -15,10 +15,12 @@
 
 ### 食用方法
 
-1. clone this repository ``` git clone https://github.com/idealclover/Resume.git```
-2. 进入目录并安装依赖 ```npm install```
-3. 按照数据格式填写```data.json```
-4. 输入对应指令生成简历文件
+1. 安装nodejs与npm：[点击这里](http://nodejs.cn/download/)
+2. clone this repository ``` git clone https://github.com/idealclover/Resume.git```
+3. 进入目录并安装依赖 ```npm install```
+4. 按照数据格式填写```data.json```
+5. 输入对应指令生成简历文件
+6. ~~意识到自己太菜了并去丰富简历~~
 
 ```
 npm run build-all //一键生成全部格式
