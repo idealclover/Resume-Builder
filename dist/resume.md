@@ -35,7 +35,9 @@ PM Intern
 
 上海
 
-* &#60;a href=&#39;https://idealclover.top&#39;&#62;QAQAQ&#60;/a&#62;
+* 编写亚马逊小程序“镇店之宝”页面，独立编写Python脚本抓取商品信息并自动生成促销页面
+* 负责亚马逊小程序的内部迁移工作，并利用AWS Elastic Beanstalk, API GateWay, DynamoDB等工具进行小程序资源与数据管理
+* 参与Amazon-Udacity步行日挑战小程序，Amazon十年挑战小程序等5个活动小程序的策划，跟进与迭代工作，其中Amazon十年挑战小程序在发布5日内获得12000+次点击，共计拉新1500+用户
 
 ## 项目经历
 -----
