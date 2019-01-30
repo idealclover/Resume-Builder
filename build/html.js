@@ -12,7 +12,13 @@ fs.writeFile('./dist/resume.html', html,  function(err) {
 
 var pdf = require('html-pdf');
 var options = {
-    format: 'A4'
+    format: 'A4',
+    border: {
+        "top": "1.5cm",
+        "bottom": "1.5cm",
+        "right": "0.64cm",
+        "left": "0.64cm"
+    },
 };
 
 pdf.create(html, options).toFile('./dist/resume.pdf', function(err, res) {
