@@ -1,4 +1,5 @@
 const http = require('http');
+const path=require('path');
 const fs = require("fs");
 const url=require('url');
 
@@ -28,8 +29,7 @@ var MIME_TYPE = {
 
 const server = http.createServer((req, res) => {
 
-    console.log("New request arrived.");
-
+    console.log("New request arrived: " + req.url);
     if(req.url==="/"){
         const template = require('art-template');
         const data = require('../data.json');
@@ -39,14 +39,14 @@ const server = http.createServer((req, res) => {
         res.write(html);
         res.end();
     } else{
-        const filePath = "./" + url.parse(req.url).pathname;
+        const filePath = __dirname + '/..' + req.url;
         fs.exists(filePath,function(err){
             if(!err){
                 res.writeHead(404,{'Content-Type':'text/plain'})
                 res.write('Error 404: Not Found.');
                 res.end();
             }else{
-                const ext = path.extname(filePath);
+                let ext = path.extname(filePath);
                 ext = ext?ext.slice(1) : 'unknown';
                 const contentType = MIME_TYPE[ext] || "text/plain";
                 fs.readFile(filePath,function(err,data){

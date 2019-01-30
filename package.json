@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build-html": "node build/html.js",
+    "build-pdf": "node build/html.js",
     "build-md": "node build/markdown.js",
     "build-dev": "node build/app.js"
   }

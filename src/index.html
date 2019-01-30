@@ -2,88 +2,7 @@
 <head>
     <meta charset='utf-8'>
     <title>{{name}}的简历</title>
-    <!-- <link href="static/style.css" rel="stylesheet"> -->
-    <style>
-        .main{
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-        }
-        .container{
-            grid-column: 2 / 12
-        }
-        .name{
-            margin-bottom: 0.2rem
-        }
-        .contact{
-            text-align: center;
-        }
-        .project{
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-        }
-        .project{
-            grid-column: span 12;
-        }
-        .project_value{
-            font-weight:bold;
-            grid-column: span 6;
-        }
-        .project_time{
-            /* display: inline; */
-            grid-column: span 6;
-            text-align: right;
-        }
-        .project_role{
-            /* display: inline; */
-            grid-column: span 6;
-        }
-        .project_position{
-            /* display: inline; */
-            text-align: right;
-            grid-column: span 6;
-        }
-        .project_list{
-            grid-column: span 12;
-            margin-top: 0.5em;
-            margin-bottom: 1em;
-        }
-        @media print{
-           .main, h2, h3{
-               font-size: 30px;
-           }
-           h2, h3{
-               margin: 0;
-           }
-           .name{
-               margin-bottom: 10px;
-           }
-           .project_value{
-               font-weight: 600;
-               display: inline-block;
-               text-align: left;
-               float: left;
-               width: 50%;
-           }
-           .project_role{
-               display: inline-block;
-               text-align: left;
-               float: left;
-               width: 50%;
-           }
-           .project_time, .project_position{
-               display: inline-block;
-               text-align: right;
-               width: 50%;
-           }
-           hr{
-               margin: 10px, 0
-           }
-           .project_list{
-               margin-top: 10px;
-               margin-bottom: 30px;
-           }
-        }
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -96,23 +15,23 @@
                 {{contact.blog}}
             </section>
             {{each categories category_val category_key}}
-                <section class="category">
-                    <h2 class="category_name">{{category_key}}</h2>
-                    <hr />
-                    <section class="project">
-                    {{each category_val project_val}}
-                        <div class="project_value">{{project_val.name}}</div>
-                        <div class="project_time">{{project_val.time}}</div>
-                        <div class="project_role">{{project_val.role}}&nbsp;</div>
-                        <div class="project_position">&nbsp;{{project_val.position}}</div>
-                        <ul class="project_list">
-                            {{each project_val.details details}}
-                                <li class="project_listitem">{{details}}</li>
-                            {{/each}}
-                        </ul>
-                    {{/each}}
-                    </section>
+            <section class="category">
+                <h2 class="category_name">{{category_key}}</h2>
+                <hr />
+                <section class="project">
+                {{each category_val project_val}}
+                    <div class="project_value">{{project_val.name}}</div>
+                    <div class="project_time">{{project_val.time}}</div>
+                    <div class="project_role">{{project_val.role}}&nbsp;</div>
+                    <div class="project_position">&nbsp;{{project_val.position}}</div>
+                    <ul class="project_list">
+                        {{each project_val.details details}}
+                            <li class="project_listitem">{{details}}</li>
+                        {{/each}}
+                    </ul>
+                {{/each}}
                 </section>
+            </section>
             {{/each}}
         </div>
     </div>
