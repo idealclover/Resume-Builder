@@ -1,9 +1,9 @@
 const fs = require("fs");
 const template = require('art-template');
-const data = require('../src/data.json');
+const data = require('../data.json');
 const html = template(__dirname + '/../src/index.html', data);
 console.log("Ready to write data...");
-fs.writeFile('../dist/resume.html', html,  function(err) {
+fs.writeFile('./dist/resume.html', html,  function(err) {
     if (err) {
         return console.error(err);
     }
@@ -15,7 +15,7 @@ var options = {
     format: 'A4'
 };
 
-pdf.create(html, options).toFile('../dist/resume.pdf', function(err, res) {
+pdf.create(html, options).toFile('./dist/resume.pdf', function(err, res) {
     if (err) return console.log(err);
     //console.log(res); // { filename: '/app/businesscard.pdf' }
 });

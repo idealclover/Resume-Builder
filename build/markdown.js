@@ -1,6 +1,6 @@
 const fs = require("fs");
 const template = require('art-template');
-const data = require('../src/data.json');
+const data = require('../data.json');
 const html = template(__dirname + '/../src/index.md', data);
 console.log("Ready to write data...");
 fs.writeFile('./dist/resume.md', html,  function(err) {
