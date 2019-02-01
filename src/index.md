@@ -1,7 +1,8 @@
 # {{name}}
 -----
 {{each contact contact_val}}
-> {{contact_val}}{{/each}}
+> {{contact_val}}
+{{/each}}
 
 {{each categories category_val category_key}}
 ## {{category_key}}
