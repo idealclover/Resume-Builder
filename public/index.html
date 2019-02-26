@@ -1,0 +1,250 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="manifest" href="site.webmanifest">-->
+    <!-- Place favicon.ico in the root directory -->
+
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<style>
+    #uploadFile {
+        min-height: 200px;
+        border: 2px dashed #666666;
+        border-radius: 5px;
+        background: white;
+    }
+
+    #main {
+        padding-top: 5%;
+    }
+
+    #submitBtn {
+        padding-top: 5%;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+</style>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Add your site or application content here -->
+<!--<p>Hello world! This is HTML5 Boilerplate.</p>-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">My Resume</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">开始使用 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">文件格式</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">GitHub</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container col-1-11 tab">
+    <div class="row" id="main">
+        <div class="container col-12 col-lg-6">
+            <!--<form action="/file-upload" class="dropzone" id="uploadFile"></form>-->
+            <h2>拖拽上传文件</h2>
+            <div id="uploadFile"></div>
+        </div>
+        <div class="container col-12 col-lg-6">
+            <h2>或直接编辑</h2>
+            <textarea class="form-control" id="uploadJson" rows="8"></textarea>
+        </div>
+    </div>
+
+    <div class="container col-12 text-center" id="submitBtn">
+        <button type="button" class="btn btn-secondary" id="generator" onclick="nextPrev(1)">生成简历</button>
+    </div>
+</div>
+
+<div class="tab">
+    <div class="container col-12 text-center" id="mdBtn">
+        <button type="button" class="btn btn-secondary" id="markdown" onclick="downloadMD()">markdown格式文件下载</button>
+    </div>
+    <div class="container col-12 text-center" id="htmlBtn">
+        <button type="button" class="btn btn-secondary" id="html" onclick="downloadHTML()">html格式文件下载</button>
+    </div>
+    <div class="container col-12 text-center" id="pdfBtn">
+        <button type="button" class="btn btn-secondary" id="pdf" onclick="downloadPDF()">pdf格式文件下载</button>
+    </div>
+</div>
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
+<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>-->
+<script src="https://cdn.bootcss.com/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/dropzone/5.5.1/min/dropzone.min.js"></script>
+<script src="https://cdn.bootcss.com/downloadjs/1.4.8/download.min.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<!--<script>-->
+<!--window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;-->
+<!--ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')-->
+<!--</script>-->
+<!--<script src="https://www.google-analytics.com/analytics.js" async defer></script>-->
+</body>
+
+<script>
+    let currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        let x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        // ... and fix the Previous/Next buttons:
+        // if (n === 0) {
+        //   document.getElementById("prevBtn").style.display = "none";
+        // } else {
+        //   document.getElementById("prevBtn").style.display = "inline";
+        // }
+        // if (n === (x.length - 1)) {
+        //   document.getElementById("nextBtn").innerHTML = "Submit";
+        // } else {
+        //   document.getElementById("nextBtn").innerHTML = "Next";
+        // }
+        // ... and run a function that displays the correct step indicator:
+        // fixStepIndicator(n)
+    }
+
+    let dropzone = new Dropzone('div#uploadFile', {
+        maxFiles: 1,
+        // acceptedFiles: '.txt',
+        accept: function (file, done) {
+            done('Upload successfully.');
+        },
+        init: function () {
+            this.on("maxfilesexceeded", function (file) {
+                alert("MAX_FILES_EXCEEDED");
+                this.removeAllFiles();
+            });
+        },
+        url: 'uploadFile'
+    });
+    dropzone.on('addedfile', function (file) {
+        if (file.name.endsWith('.txt') || file.name.endsWith('.json')) {
+            let reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function (e) {
+                console.log(this.result);
+                let textArea = document.getElementById('uploadJson');
+                textArea.value = this.result;
+            };
+        } else {
+            alert('格式不正确')
+            this.removeAllFiles();
+        }
+    });
+
+    // function validateForm() {
+    //   // This function deals with validation of the form fields
+    //   let x, y, i, valid = true;
+    //   x = document.getElementsByClassName("tab");
+    //   // y = x[currentTab].getElementsByTagName("input");
+    //   // A loop that checks every input field in the current tab:
+    //   // for (i = 0; i < y.length; i++) {
+    //   //   // If a field is empty...
+    //   //   if (y[i].value === "") {
+    //   //     // add an "invalid" class to the field:
+    //   //     y[i].className += " invalid";
+    //   //     // and set the current valid status to false:
+    //   //     valid = false;
+    //   //   }
+    //   // }
+    //   // If the valid status is true, mark the step as finished and valid:
+    //   if (valid) {
+    //     document.getElementsByClassName("step")[currentTab].className += " finish";
+    //   }
+    //   return valid; // return the valid status
+    // }
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        let x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        // if (n === 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form... :
+        // if (currentTab >= x.length) {
+        //   //...the form gets submitted:
+        //   document.getElementById("regForm").submit();
+        //   return false;
+        // }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function downloadMD() {
+        const value = JSON.parse(document.getElementById('uploadJson').value);
+        console.log(value);
+        const response = fetch('/markdown', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+        }).then(function (resp) {
+            return resp.blob();
+        }).then(function (blob) {
+            download(blob, "resume.md");
+        });
+    }
+
+    function downloadPDF() {
+        const value = JSON.parse(document.getElementById('uploadJson').value);
+        console.log(value);
+        const response = fetch('/pdf', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+        }).then(function (resp) {
+            return resp.blob();
+        }).then(function (blob) {
+            download(blob, "resume.pdf");
+        });
+    }
+
+    function downloadHTML() {
+        const value = JSON.parse(document.getElementById('uploadJson').value);
+        console.log(value);
+        const response = fetch('/html', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+        }).then(function (resp) {
+            return resp.blob();
+        }).then(function (blob) {
+            download(blob, "resume.html");
+        });
+    }
+</script>
+
+</html>

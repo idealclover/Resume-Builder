@@ -8,13 +8,15 @@
   "license": "MIT",
   "dependencies": {
     "art-template": "^4.13.2",
-    "html-pdf": "^2.2.0"
+    "html-pdf": "^2.2.0",
+    "express": "^4.16.4"
   },
   "scripts": {
     "build-html": "node build/html.js",
     "build-pdf": "node build/pdf.js",
     "build-md": "node build/markdown.js",
     "build-all": "node build/html.js & node build/pdf.js & node build/markdown.js",
-    "build-dev": "node build/app.js"
+    "build-dev": "node build/app.js",
+    "build-web": "node build/web.js"
   }
 }
