@@ -27,7 +27,7 @@ app.post('/html', function (req, res) {
     const data = req.body;
     const fs = require("fs");
     const template = require('art-template');
-    const css = fs.readFileSync('./static/style.css').toString();
+    const css = fs.readFileSync('./src/style.css').toString();
     let html = template(__dirname + '/../src/index.html', data);
     html = html + '<style>' + css + '</style>';
     res.send(html);
@@ -50,7 +50,7 @@ app.post('/pdf', function (req, res) {
     const data = req.body;
     const fs = require("fs");
     const template = require('art-template');
-    const css = fs.readFileSync('./static/style.css').toString();
+    const css = fs.readFileSync('./src/style.css').toString();
     let html = template(__dirname + '/../src/index.html', data);
     html = html + '<style>' + css + '</style>';
     let pdf = require('html-pdf');

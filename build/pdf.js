@@ -1,7 +1,7 @@
 const fs = require("fs");
 const template = require('art-template');
 const data = require('../data.json');
-const css = fs.readFileSync('./static/style.css').toString();
+const css = fs.readFileSync('./src/style.css').toString();
 let html = template(__dirname + '/../src/index.html', data);
 
 html = html + '<style>' + css + '</style>';
