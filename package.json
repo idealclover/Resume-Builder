@@ -16,7 +16,6 @@
     "build-pdf": "node build/pdf.js",
     "build-md": "node build/markdown.js",
     "build-all": "node build/html.js & node build/pdf.js & node build/markdown.js",
-    "build-dev": "node build/app.js",
     "build-web": "node build/web.js"
   }
 }
