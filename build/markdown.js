@@ -9,13 +9,3 @@ fs.writeFile('./dist/resume.md', html,  function(err) {
     }
     console.log("Data has been written. >v<");
 });
-
-var pdf = require('html-pdf');
-var options = {
-    format: 'A4'
-};
-
-pdf.create(html, options).toFile('../dist/resume.pdf', function(err, res) {
-    if (err) return console.log(err);
-    //console.log(res); // { filename: '/app/businesscard.pdf' }
-});
