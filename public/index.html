@@ -15,14 +15,24 @@
 
 <style>
     #uploadFile {
-        min-height: 200px;
+        height: 205px;
         border: 2px dashed #666666;
         border-radius: 5px;
         background: white;
     }
 
-    #main {
+    .main {
         padding-top: 5%;
+    }
+
+    .upload {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #uploadFile, #uploadJson {
+        flex: 1;
+        margin-bottom: 10px;
     }
 
     #submitBtn {
@@ -31,6 +41,14 @@
 
     /* Hide all steps by default: */
     .tab {
+        display: none;
+    }
+
+    .download {
+        margin-top: 40px;
+    }
+
+    .dz-success-mark, .dz-error-mark {
         display: none;
     }
 </style>
@@ -45,31 +63,31 @@
 <!-- Add your site or application content here -->
 <!--<p>Hello world! This is HTML5 Boilerplate.</p>-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My Resume</a>
+    <a class="navbar-brand" href="/">My Resume</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">开始使用 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">开始使用 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">文件格式</a>
+                <a class="nav-link" href="/guide.html">文件格式</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">GitHub</a>
+                <a class="nav-link" href="https://github.com/idealclover/Resume-Builder" target="_blank">GitHub</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <div class="container col-1-11 tab">
-    <div class="row" id="main">
-        <div class="container col-12 col-lg-6">
+    <div class="row main">
+        <div class="upload container col-12 col-lg-6">
             <!--<form action="/file-upload" class="dropzone" id="uploadFile"></form>-->
             <h2>拖拽上传文件</h2>
             <div id="uploadFile"></div>
         </div>
-        <div class="container col-12 col-lg-6">
+        <div class="upload container col-12 col-lg-6">
             <h2>或直接编辑</h2>
             <textarea class="form-control" id="uploadJson" rows="8"></textarea>
         </div>
@@ -80,20 +98,18 @@
     </div>
 </div>
 
-<div class="tab">
-    <div class="container col-12 text-center" id="mdBtn">
-        <button type="button" class="btn btn-secondary" id="markdown" onclick="downloadMD()">markdown格式文件下载</button>
-    </div>
-    <div class="container col-12 text-center" id="htmlBtn">
-        <button type="button" class="btn btn-secondary" id="html" onclick="downloadHTML()">html格式文件下载</button>
-    </div>
-    <div class="container col-12 text-center" id="pdfBtn">
-        <button type="button" class="btn btn-secondary" id="pdf" onclick="downloadPDF()">pdf格式文件下载</button>
+<div class="container col-1-11 tab">
+    <div class="col main">
+        <h2>点击下载生成的简历</h2>
+        <button type="button" class="btn btn-secondary download" id="markdown" onclick="downloadMD()">markdown格式文件下载
+        </button>
+        <button type="button" class="btn btn-secondary download" id="html" onclick="downloadHTML()">html格式文件下载</button>
+        <button type="button" class="btn btn-secondary download" id="pdf" onclick="downloadPDF()">pdf格式文件下载</button>
+        <button type="button" class="btn btn-secondary download" id="preStep" onclick="prePrev(1)">返回上步</button>
     </div>
 </div>
 
-<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
-<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/dropzone/5.5.1/min/dropzone.min.js"></script>
@@ -114,19 +130,6 @@
     function showTab(n) {
         let x = document.getElementsByClassName("tab");
         x[n].style.display = "block";
-        // ... and fix the Previous/Next buttons:
-        // if (n === 0) {
-        //   document.getElementById("prevBtn").style.display = "none";
-        // } else {
-        //   document.getElementById("prevBtn").style.display = "inline";
-        // }
-        // if (n === (x.length - 1)) {
-        //   document.getElementById("nextBtn").innerHTML = "Submit";
-        // } else {
-        //   document.getElementById("nextBtn").innerHTML = "Next";
-        // }
-        // ... and run a function that displays the correct step indicator:
-        // fixStepIndicator(n)
     }
 
     let dropzone = new Dropzone('div#uploadFile', {
@@ -179,28 +182,31 @@
     //   }
     //   return valid; // return the valid status
     // }
+
     function nextPrev(n) {
         // This function will figure out which tab to display
         let x = document.getElementsByClassName("tab");
-        // Exit the function if any field in the current tab is invalid:
-        // if (n === 1 && !validateForm()) return false;
         // Hide the current tab:
         x[currentTab].style.display = "none";
         // Increase or decrease the current tab by 1:
         currentTab = currentTab + n;
-        // if you have reached the end of the form... :
-        // if (currentTab >= x.length) {
-        //   //...the form gets submitted:
-        //   document.getElementById("regForm").submit();
-        //   return false;
-        // }
-        // Otherwise, display the correct tab:
+        // Display the correct tab:
+        showTab(currentTab);
+    }
+
+    function prePrev(n) {
+        // This function will figure out which tab to display
+        let x = document.getElementsByClassName("tab");
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab - n;
+        // Display the correct tab:
         showTab(currentTab);
     }
 
     function downloadMD() {
         const value = JSON.parse(document.getElementById('uploadJson').value);
-        console.log(value);
         const response = fetch('/markdown', {
             method: 'post',
             headers: {
@@ -232,7 +238,6 @@
 
     function downloadHTML() {
         const value = JSON.parse(document.getElementById('uploadJson').value);
-        console.log(value);
         const response = fetch('/html', {
             method: 'post',
             headers: {

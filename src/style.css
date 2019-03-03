@@ -11,69 +11,45 @@
 .contact{
     text-align: center;
 }
-.project{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+h2{
+    font-size: 20px;
 }
-.project{
-    grid-column: span 12;
+h3{
+    font-size: 15px;
+}
+.name{
+    margin-bottom: 10px;
 }
 .project_value{
-    font-weight:bold;
-    grid-column: span 6;
-}
-.project_time{
-    /* display: inline; */
-    grid-column: span 6;
-    text-align: right;
+    font-weight: 600;
+    display: inline-block;
+    text-align: left;
+    float: left;
+    width: 50%;
 }
 .project_role{
-    /* display: inline; */
-    grid-column: span 6;
+    display: inline-block;
+    text-align: left;
+    float: left;
+    width: 50%;
 }
-.project_position{
-    /* display: inline; */
+.project_time, .project_position{
+    display: inline-block;
     text-align: right;
-    grid-column: span 6;
+    width: 50%;
 }
 .project_list{
-    grid-column: span 12;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-@media print{
-   .main, h2, h3{
-       font-size: 30px;
-   }
-   h2, h3{
-       margin: 0;
-   }
-   .name{
-       margin-bottom: 10px;
-   }
-   .project_value{
-       font-weight: 600;
-       display: inline-block;
-       text-align: left;
-       float: left;
-       width: 50%;
-   }
-   .project_role{
-       display: inline-block;
-       text-align: left;
-       float: left;
-       width: 50%;
-   }
-   .project_time, .project_position{
-       display: inline-block;
-       text-align: right;
-       width: 50%;
-   }
-   hr{
-       margin: 10px 0;
-   }
-   .project_list{
-       margin-top: 10px;
-       margin-bottom: 30px;
-   }
+@media print {
+    .main {
+        font-family: "STXihei", "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    }
+    h2, h3{
+        margin: 0;
+    }
+    hr{
+        margin: 0 0;
+    }
 }
