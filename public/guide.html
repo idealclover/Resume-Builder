@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>使用帮助 - My Resume</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
@@ -19,12 +19,33 @@
     your browser</a> to improve your experience and security.</p>
 <![endif]-->
 <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!--<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.14.2/styles/default.min.css">-->
+
+<style>
+    .main {
+        background-color: #F8F9FA;
+    }
+
+    .text {
+        margin-top: 5%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+</style>
 
 <!-- Add your site or application content here -->
 <!--<p>Hello world! This is HTML5 Boilerplate.</p>-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">My Resume</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,7 +57,10 @@
                 <a class="nav-link" href="/guide.html">使用帮助 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/premium.html">更多PY<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/template.json">示例文件</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/premium.html">关于PY<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/idealclover/Resume-Builder" target="_blank">GitHub🔗</a>
@@ -44,10 +68,85 @@
         </ul>
     </div>
 </nav>
+
+<div class="container col-1-11 main ">
+    <div class="text">
+        <blockquote class="blockquote">
+            <h1>My Resume</h1>
+            <footer class="blockquote-footer">傻翠的简历生成引擎ww</footer>
+        </blockquote>
+        <h2>🙋这是什么？</h2>
+        <footer class="blockquote-footer">🤣写简历的时候才知道自己这么懒 QAQ</footer>
+        这是一个简历生成引擎，最初为Nodejs版本，后来包装成了网页，其主要特性有：
+        <ul class="list-unstyled">
+            <ul>
+                <li>根据传入的数据，自动生成美观简历</li>
+                <li>避免了来回调整格式的困扰</li>
+                <li>支持生成<b>Markdown，HTML，PDF</b>等多种形式的简历生成</li>
+                <li>完全开源，可在此基础上自定义样式</li>
+            </ul>
+        </ul>
+        <h2>🔧如何使用</h2>
+        <footer class="blockquote-footer">🤣写简历的时候才知道自己这么菜 QAQ</footer>
+        <p>在<a href="/">开始使用</a>中，以上传文件或编辑的方式，将规定格式的数据放入其中，数据格式为：</p>
+        <pre>
+            <code>
+{
+    "name": "",
+    "language": "zh-cn",
+    "contact": {
+        "address": "",
+        "phone": "",
+        "email": "",
+        "blog": ""
+    },
+    "categories":{
+        "类别1（如：教育背景）": [
+            {
+                "name": "项目1（如：南京大学商学院）",
+                "time": "",
+                "position": "",
+                "details": [
+                    "具体描述1",
+                    "具体描述2",
+                    ...
+                ]
+            },
+            项目2，项目3...
+        ],
+        类别2，类别3...
+    }
+}
+            </code>
+        </pre>
+        <p>这个示例文件在<a href="/template.json">这里</a>，可以在此基础上进行改动，生成自己的简历文件</p>
+        <h2>😘关于“交易”？</h2>
+        <p>由于服务器配置不够，暂还不支持PDF文件公开导出，详见<a href="/premium.html">这里</a></p>
+        <h2>😰寻求帮助？</h2>
+        <p>遇到困难了？出现bug了？你可以：</p>
+        <ul class="list-unstyled">
+            <ul>
+                <li>在GitHub上提Issue<b>（推荐）</b>：<a href="https://github.com/idealclover/Resume-Builder/issues" target="_blank">Link</a></li>
+                <li>发邮件联系作者：<a href="mailto:idealclover@163.com" target="_blank">idealclover@163.com</a></li>
+                <li>Telegram联系作者：<a href="http://wpa.qq.com/msgrd?v=3&uin=1455169173&site=qq&menu=yes" target="_blank">idealclover</a>
+                <li>QQ联系作者：<a href="https://t.me/idealclover" target="_blank">1455169173</a>
+            </ul>
+        </ul>
+        <h2>💸友情链接</h2>
+        <ul class="list-unstyled">
+            <ul>
+                <li>本项目开源地址<a href="https://github.com/idealclover/Resume-Builder" target="_blank">Github</a></li>
+                <li>傻翠的个人博客<a href="https://idealclover.top" target="_blank">idealclover.top</a></li>
+                <li>傻翠的GitHub<a href="https://github.com/idealclover" target="_blank">@idealclover</a></li>
+            </ul>
+        </ul>
+    </div>
+</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script src="https://cdn.bootcss.com/downloadjs/1.4.8/download.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/highlight.js/9.14.2/highlight.min.js"></script>-->
 </body>
 </html>

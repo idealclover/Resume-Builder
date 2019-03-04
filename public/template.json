@@ -1,0 +1,52 @@
+{
+  "name": "",
+  "language": "zh-cn",
+  "contact": {
+    "address": "",
+    "phone": "",
+    "email": "",
+    "blog": ""
+  },
+  "categories":{
+    "类别1（如：教育背景）": [
+      {
+        "name": "项目1（如：南京大学商学院）",
+        "time": "",
+        "position": "",
+        "details": [
+          "具体描述1",
+          "具体描述2"
+        ]
+      },
+      {
+        "name": "项目2（如：交换经历）",
+        "time": "",
+        "position": "",
+        "details": [
+          "具体描述1",
+          "具体描述2"
+        ]
+      }
+    ],
+    "类别2（如：实习经历）": [
+      {
+        "name": "项目1（如：Microsoft）",
+        "time": "",
+        "position": "",
+        "details": [
+          "具体描述1",
+          "具体描述2"
+        ]
+      },
+      {
+        "name": "项目2（如：Amazon）",
+        "time": "",
+        "position": "",
+        "details": [
+          "具体描述1",
+          "具体描述2"
+        ]
+      }
+    ]
+  }
+}
