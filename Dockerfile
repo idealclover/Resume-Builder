@@ -8,6 +8,8 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package*.json ./
 
+RUN apt-get update && apt-get install bzip2 && wget http://idealclover.top/phantomjs-2.1.1-linux-x86_64.tar.bz2 -P /tmp/phantomjs/
+# RUN npm install phantomjs-prebuilt -g --registry=https://registry.npm.taobao.org
 RUN npm install --registry=https://registry.npm.taobao.org
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -15,7 +17,7 @@ RUN npm install --registry=https://registry.npm.taobao.org
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 CMD [ "npm", "run", "build-web" ]
 
 
