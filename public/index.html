@@ -6,6 +6,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
     <!--<link rel="manifest" href="site.webmanifest">-->
     <!-- Place favicon.ico in the root directory -->
@@ -21,8 +22,8 @@
         background: white;
     }
 
-    .main {
-        padding-top: 5%;
+    .banner {
+        margin-top: 5%;
     }
 
     .upload {
@@ -64,23 +65,29 @@
 <!--<p>Hello world! This is HTML5 Boilerplate.</p>-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">My Resume</a>
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/">开始使用 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/guide.html">文件格式</a>
+                <a class="nav-link" href="/guide.html">使用帮助</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://github.com/idealclover/Resume-Builder" target="_blank">GitHub</a>
+                <a class="nav-link" href="/premium.html">更多PY<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/idealclover/Resume-Builder" target="_blank">GitHub🔗</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <div class="container col-1-11 tab">
+    <h1><span class="badge badge-secondary banner">👆使用前请查看使用帮助ww</span></h1>
     <div class="row main">
         <div class="upload container col-12 col-lg-6">
             <!--<form action="/file-upload" class="dropzone" id="uploadFile"></form>-->
@@ -100,11 +107,11 @@
 
 <div class="container col-1-11 tab">
     <div class="col main">
-        <h2>点击下载生成的简历</h2>
+        <h1><span class="badge badge-secondary banner">👇点击下载生成的简历</span></h1>
         <button type="button" class="btn btn-secondary download" id="markdown" onclick="downloadMD()">markdown格式文件下载
         </button>
         <button type="button" class="btn btn-secondary download" id="html" onclick="downloadHTML()">html格式文件下载</button>
-        <button type="button" class="btn btn-secondary download" id="pdf" onclick="downloadPDF()">pdf格式文件下载</button>
+        <a role="button" class="btn btn-warning download" id="pdf" href="/premium.html"  target="_blank">pdf格式文件下载👑</a>
         <button type="button" class="btn btn-secondary download" id="preStep" onclick="prePrev(1)">返回上步</button>
     </div>
 </div>
@@ -184,6 +191,18 @@
     // }
 
     function nextPrev(n) {
+        let textArea = document.getElementById('uploadJson');
+        if(!textArea.value){
+            alert("你还没有编辑内容哦~");
+            return;
+        }
+        try{
+            const value = JSON.parse(textArea.value);
+        }catch (e){
+            // console.log(e);
+            alert("json格式不正确~建议参考使用帮助~");
+            return;
+        }
         // This function will figure out which tab to display
         let x = document.getElementsByClassName("tab");
         // Hide the current tab:
