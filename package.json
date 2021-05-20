@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "art-template": "^4.13.2",
-    "html-pdf": "^2.2.0",
+    "html-pdf": "^3.0.1",
     "express": "^4.16.4"
   },
   "scripts": {
